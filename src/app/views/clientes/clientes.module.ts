@@ -9,6 +9,8 @@ import { ClientesComponent } from './clientes/clientes.component';
 import { NewClienteComponent } from './new-cliente/new-cliente.component';
 import { EditClienteComponent } from './edit-cliente/edit-cliente.component';
 
+import { NgxMaskModule,IConfig } from 'ngx-mask';
+
 
 @NgModule({
   declarations: [
@@ -22,7 +24,8 @@ import { EditClienteComponent } from './edit-cliente/edit-cliente.component';
     ComponentsModule,
     MaterialModule,
     ReactiveFormsModule,
-    FormsModule
+    FormsModule,
+    NgxMaskModule.forChild()
   ]
 })
 export class ClientesModule { }
