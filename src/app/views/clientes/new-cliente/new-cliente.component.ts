@@ -31,11 +31,13 @@ export class NewClienteComponent implements OnInit {
   }
 
   public create(): void {
+    console.log(this.formCliente)
     if(this.formCliente.valid) {
       const cliente: Cliente = this.formCliente.value;
       this.clienteService.create(cliente).subscribe(response => {
         alert("Cliente cadastrado com sucesso!");
         this.router.navigate(["/clientes"]);
+        
       });
     }
     else {
