@@ -3,6 +3,7 @@ import { ClienteService } from './../../../services/cliente.service';
 import { Cliente } from 'src/app/models/cliente';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { Component, OnInit } from '@angular/core';
+import { NotificationService } from 'src/app/services/notification.service';
 
 @Component({
   selector: 'app-new-cliente',
@@ -16,7 +17,8 @@ export class NewClienteComponent implements OnInit {
   constructor(
     formBuilder: FormBuilder,
     private clienteService: ClienteService,
-    private router: Router
+    private router: Router,
+    private notifyService: NotificationService
   ) {
     this.formCliente = formBuilder.group({
       nome: ["", [Validators.required]],
@@ -31,17 +33,17 @@ export class NewClienteComponent implements OnInit {
   }
 
   public create(): void {
-    console.log(this.formCliente)
+    console.log("Hello world")
     if(this.formCliente.valid) {
       const cliente: Cliente = this.formCliente.value;
       this.clienteService.create(cliente).subscribe(response => {
-        alert("Cliente cadastrado com sucesso!");
+        this.notifyService.showSuccess("Cliente cadastrado com sucesso!", "Sucesso!");
         this.router.navigate(["/clientes"]);
         
       });
     }
     else {
-      alert("Dados inválidos.");
+      this.notifyService.showError("Dados inválidos.", "Inválido");
     }
   }
 }
