@@ -23,7 +23,11 @@ const routes: Routes = [
     path: 'chamados',
     loadChildren: () => import('./views/chamados/chamados.module').then(m => m.ChamadosModule),
     canActivateChild:[LimitadorClienteGuard]
-  }
+  },
+  { path: 'funcionario', 
+  loadChildren: () => import('./views/funcionarios/funcionarios.module').then(m => m.FuncionariosModule),
+  canActivateChild:[LimitadorClienteGuard] }
+ 
 ];
 
 @NgModule({
