@@ -2,6 +2,7 @@ import { ChamadosComponent } from './views/chamados/chamados/chamados.component'
 import { ClientesComponent } from './views/clientes/clientes/clientes.component';
 import { HomeComponent } from './views/home/home/home.component';
 import { LoginComponent } from './views/login/login/login.component';
+import { LimitadorClienteGuard } from './guards/limitador-cliente.guard';
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { AuthGuard } from './guards/auth.guard';
@@ -29,12 +30,14 @@ const routes: Routes = [
     path: 'clientes',
     loadChildren: () => import('./views/clientes/clientes.module').then(m => m.ClientesModule),
     component: ClientesComponent,
+    canActivateChild:[LimitadorClienteGuard],
     data: { titulo: 'Helpr | Clientes'}
   },
   {
     path: 'chamados',
     loadChildren: () => import('./views/chamados/chamados.module').then(m => m.ChamadosModule),
     component: ChamadosComponent,
+    canActivateChild:[LimitadorClienteGuard],
     data: { titulo: 'Helpr | Chamados'}
   }
 ];
