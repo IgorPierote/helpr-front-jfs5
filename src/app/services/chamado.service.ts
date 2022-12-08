@@ -4,18 +4,22 @@ import { Observable, EMPTY } from 'rxjs';
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Chamado } from '../models/chamado';
+import { NotificationService } from './notification.service';
 
 @Injectable({
   providedIn: 'root'
 })
 export class ChamadoService {
 
-  constructor(private http: HttpClient) { }
+  constructor(
+    private http: HttpClient,
+    private notifyService: NotificationService
+    ) { }
 
   public findAll(): Observable<Chamado[]> {
     return this.http.get<Chamado[]>(`${API_CONFIG.baseUrl}/chamados`).pipe(
       catchError(error => {
-        alert("Erro ao buscar dados de chamados.");
+        this.notifyService.showError("Erro ao buscar dados de chamados.", "Erro :(");
         console.error(error);
         return EMPTY;
       })
@@ -30,7 +34,7 @@ export class ChamadoService {
     }
     return this.http.post<Chamado>(`${API_CONFIG.baseUrl}/chamados`, data).pipe(
       catchError(error => {
-        alert("Erro ao cadastrar novo chamado.");
+        this.notifyService.showError("Erro ao cadastrar novo chamado.", "Erro :(");
         console.error(error);
         return EMPTY;
       })

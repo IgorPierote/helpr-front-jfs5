@@ -1,6 +1,7 @@
 import { ChamadoService } from './../../../services/chamado.service';
 import { Chamado } from './../../../models/chamado';
 import { Component, OnInit } from '@angular/core';
+import { NotificationService } from 'src/app/services/notification.service';
 
 @Component({
   selector: 'app-chamados',
@@ -12,7 +13,9 @@ export class ChamadosComponent implements OnInit {
   displayedColumns: string[] = ['id', 'titulo', 'cliente', 'funcionario', 'dataAbertura', 'status', 'editar', 'detalhes'];
   dataSource: Chamado[] = [];
 
-  constructor(private chamadoService: ChamadoService) { }
+  constructor(
+    private chamadoService: ChamadoService,
+    ) { }
 
   ngOnInit(): void {
     this.initializeTable();
