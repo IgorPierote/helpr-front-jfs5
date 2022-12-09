@@ -5,6 +5,7 @@ import { CommonModule } from '@angular/common';
 
 import { FuncionariosRoutingModule } from './funcionarios-routing.module';
 import { FuncionariosComponent } from './funcionarios/funcionarios.component';
+import { NgxMaskModule } from 'ngx-mask';
 
 
 
@@ -16,7 +17,8 @@ import { FuncionariosComponent } from './funcionarios/funcionarios.component';
     CommonModule,
     FuncionariosRoutingModule,
     MaterialModule,
-    ComponentsModule
+    ComponentsModule,
+    NgxMaskModule.forChild()
   ]
 })
 export class FuncionariosModule { }

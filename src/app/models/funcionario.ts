@@ -3,7 +3,12 @@ export interface Funcionario {
     nome: string;
     email: string;
     cpf: string;
-    telefone: string;
+    cargo:{
+        id?:number,
+        nome:string,
+        descricao:string,
+        salario:string
+    }
     perfil?: string;
     senha?: string;
     foto?:string
