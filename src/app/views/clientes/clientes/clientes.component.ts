@@ -19,7 +19,8 @@ export class ClientesComponent implements OnInit {
     ) { }
 
   ngOnInit(): void {
-    this.initializeTable();
+   this.initializeTable()
+    
   }
 
   private initializeTable(): void {
