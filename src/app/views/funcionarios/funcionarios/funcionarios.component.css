@@ -14,3 +14,10 @@ table {
     width: 70px;
     border-radius: 50px;
 }
+
+.loading-spinner {
+    padding: 25px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
