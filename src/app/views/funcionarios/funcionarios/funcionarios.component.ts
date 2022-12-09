@@ -8,19 +8,27 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./funcionarios.component.css']
 })
 export class FuncionariosComponent implements OnInit {
-
-  constructor(private funcionarioService:FuncionarioService) { }
-  displayedColumns: string[] = ['foto','id', 'nome', 'cpf', 'email', 'cargo', 'editar', 'detalhes'];
+  constructor(private funcionarioService: FuncionarioService) {}
+  displayedColumns: string[] = [
+    'foto',
+    'id',
+    'nome',
+    'cpf',
+    'email',
+    'cargo',
+    'editar',
+    'detalhes',
+  ];
   dataSource: Funcionario[] = [];
 
   ngOnInit(): void {
-    this.InitializeTable()
+    this.initializeTable();
   }
-public InitializeTable(){
-  this.funcionarioService.findAll().subscribe(
-    resposta =>{
-      this.dataSource = resposta
-    }
-  )
-}
+ 
+
+  public initializeTable() : void {
+    this.funcionarioService.findAll().subscribe(funcionarios => {
+      this.dataSource = funcionarios;
+    })
+  }
 }
