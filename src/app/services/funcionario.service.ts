@@ -1,3 +1,4 @@
+import { Funcionario } from './../models/funcionario';
 import { catchError } from 'rxjs/operators';
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
@@ -11,8 +12,8 @@ export class FuncionarioService {
 
   constructor(private http: HttpClient) {
   }
-  public findAll(): Observable<any> {
-   return this.http.get(`${API_CONFIG.baseUrl}/funcionarios`).pipe(
+  public findAll(): Observable<Funcionario[]> {
+   return this.http.get<Funcionario[]>(`${API_CONFIG.baseUrl}/funcionarios`).pipe(
     catchError((error: any) => {
       console.error(error)
       return EMPTY;

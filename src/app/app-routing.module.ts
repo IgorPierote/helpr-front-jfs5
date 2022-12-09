@@ -39,7 +39,11 @@ const routes: Routes = [
     canActivateChild:[LimitadorClienteGuard],
     component: ChamadosComponent,
     data: { titulo: 'Helpr | Chamados'}
-  }
+  },
+  { path: 'funcionario', 
+  loadChildren: () => import('./views/funcionarios/funcionarios.module').then(m => m.FuncionariosModule),
+  canActivateChild:[LimitadorClienteGuard] }
+ 
 ];
 
 @NgModule({
