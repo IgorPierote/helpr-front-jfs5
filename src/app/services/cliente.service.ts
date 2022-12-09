@@ -1,4 +1,4 @@
-import { catchError } from 'rxjs/operators';
+import { catchError, delay } from 'rxjs/operators';
 import { Observable, EMPTY } from 'rxjs';
 import { Cliente } from 'src/app/models/cliente';
 import { API_CONFIG } from './../config/api.config';
@@ -18,7 +18,7 @@ export class ClienteService {
 
   public findAll(): Observable<Cliente[]> {
     return this.http.get<Cliente[]>(`${API_CONFIG.baseUrl}/clientes`).pipe(
-      catchError(error => {
+        catchError(error => {
         this.notifyService.showError("Erro ao buscar dados de clientes", "Erro :(");
         console.error(error);
         return EMPTY;
