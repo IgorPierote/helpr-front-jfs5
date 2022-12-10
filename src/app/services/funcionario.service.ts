@@ -1,13 +1,13 @@
 import { NotificationService } from 'src/app/services/notification.service';
 import { Funcionario } from './../models/funcionario';
-import { catchError } from 'rxjs/operators';
+import { catchError, delay } from 'rxjs/operators';
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { EMPTY, Observable } from 'rxjs';
 import { API_CONFIG } from '../config/api.config';
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 export class FuncionarioService {
 
@@ -15,12 +15,15 @@ export class FuncionarioService {
     private notificationService:NotificationService) {
   }
   public findAll(): Observable<Funcionario[]> {
-   return this.http.get<Funcionario[]>(`${API_CONFIG.baseUrl}/funcionarios`).pipe(
-    catchError((error: any) => {
-      console.error(error)
-      return EMPTY;
-    })
-   )
+    return this.http
+      .get<Funcionario[]>(`${API_CONFIG.baseUrl}/funcionarios`)
+      .pipe(
+        catchError((error: any) => {
+          this.notificationService.showError("Erro ao buscar funcionarios", "ERRO")
+          console.error(error);
+          return EMPTY;
+        })
+      );
   }
 
   public create(funcionario:Funcionario):Observable<Funcionario>{
@@ -32,4 +35,5 @@ export class FuncionarioService {
       })
     )
   }
+
 }

@@ -6,8 +6,12 @@
         <i class="material-icons">add</i>
       </a>
     </div>
+    <mat-form-field class="custom-mat-form-field">
+      <mat-label class="material-icons">search</mat-label>
+      <input matInput (keyup)="applyFilter($event)" placeholder="Filtro de busca" #input>
+    </mat-form-field>
 
-    <div *ngIf="dataSource.length > 0; else loading">
+    <div *ngIf="dataSource; else loading">
       <table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
         <ng-container matColumnDef="id">
           <th mat-header-cell *matHeaderCellDef>Id</th>
@@ -66,5 +70,6 @@
         <mat-spinner></mat-spinner>
       </div>
     </ng-template>
+
   </ng-container>
 </app-nav-bar>
