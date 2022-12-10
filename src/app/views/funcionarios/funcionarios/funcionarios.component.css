@@ -14,3 +14,6 @@ table {
     width: 70px;
     border-radius: 50px;
 }
+.custom-mat-form-field {
+  display: contents;
+}
