@@ -15,32 +15,28 @@ const routes: Routes = [
   },
   {
     path: 'login',
-    loadChildren: () => import("./views/login/login.module").then(m => m.LoginModule),
-    component: LoginComponent,
+    loadChildren: () => import("./views/login/login.module").then(m => m.LoginModule), 
     data: {titulo: 'Helpr | Login'}
   },
   {
     path: 'home',
     loadChildren: () => import('./views/home/home.module').then(m => m.HomeModule),
     canActivate: [ AuthGuard ],
-    component: HomeComponent,
     data: { titulo: 'Helpr | Página Principal'}
   },
   {
     path: 'clientes',
     loadChildren: () => import('./views/clientes/clientes.module').then(m => m.ClientesModule),
-    canActivateChild:[LimitadorClienteGuard],
-    component: ClientesComponent,
+    canActivateChild:[LimitadorClienteGuard], 
     data: { titulo: 'Helpr | Clientes'}
   },
   {
     path: 'chamados',
     loadChildren: () => import('./views/chamados/chamados.module').then(m => m.ChamadosModule),
     canActivateChild:[LimitadorClienteGuard],
-    component: ChamadosComponent,
     data: { titulo: 'Helpr | Chamados'}
   },
-  { path: 'funcionario', 
+  { path: 'funcionarios', 
   loadChildren: () => import('./views/funcionarios/funcionarios.module').then(m => m.FuncionariosModule),
   canActivateChild:[LimitadorClienteGuard] }
  

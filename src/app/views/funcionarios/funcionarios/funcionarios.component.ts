@@ -10,7 +10,7 @@ import { Component, OnInit } from '@angular/core';
 export class FuncionariosComponent implements OnInit {
 
   constructor(private funcionarioService:FuncionarioService) { }
-  displayedColumns: string[] = ['foto','id', 'nome', 'cpf', 'email', 'cargo', 'editar', 'detalhes'];
+  displayedColumns: string[] = ['id','foto', 'nome', 'cpf', 'email', 'cargo', 'editar', 'detalhes'];
   dataSource: Funcionario[] = [];
 
   ngOnInit(): void {
