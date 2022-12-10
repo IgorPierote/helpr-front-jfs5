@@ -21,3 +21,6 @@ table {
     align-items: center;
     justify-content: center;
 }
+.custom-mat-form-field {
+  display: contents;
+}
