@@ -21,7 +21,8 @@ export class ClientesComponent implements OnInit {
     'editar',
     'excluir',
   ];
-  dataSource: Cliente[] = [];
+  // dataSource: Cliente[] = [];
+  dataSource = new MatTableDataSource(ELEMENT_DATA)
 
   constructor(
     private clienteService: ClienteService,
@@ -34,8 +35,13 @@ export class ClientesComponent implements OnInit {
 
   private initializeTable(): void {
     this.clienteService.findAll().subscribe((clientes) => {
-      this.dataSource = clientes;
+      this.dataSource = new MatTableDataSource(clientes);
     });
+  }
+
+  applyFilter(event: Event) {
+    const filterValue = (event.target as HTMLInputElement).value;
+    this.dataSource.filter = filterValue.trim().toLowerCase();
   }
 
   public delete(id: number): void {

@@ -22,7 +22,7 @@ export class FuncionariosComponent implements OnInit {
     'editar',
     'detalhes',
   ];
-  dataSource: Funcionario[] = [];
+  dataSource = new MatTableDataSource(ELEMENT_DATA)
 
   ngOnInit(): void {
     this.initializeTable();
@@ -31,7 +31,11 @@ export class FuncionariosComponent implements OnInit {
 
   public initializeTable() : void {
     this.funcionarioService.findAll().subscribe(funcionarios => {
-      this.dataSource = funcionarios;
+      this.dataSource = new MatTableDataSource(funcionarios);
     })
+  }
+  applyFilter(event: Event) {
+    const filterValue = (event.target as HTMLInputElement).value;
+    this.dataSource.filter = filterValue.trim().toLowerCase();
   }
 }
