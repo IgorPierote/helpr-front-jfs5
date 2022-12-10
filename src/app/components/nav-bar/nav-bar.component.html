@@ -14,14 +14,17 @@
                 <i class="material-icons">perm_phone_msg</i>
                 Chamados
             </a>
+            <a mat-list-item routerLink="/funcionario" routerLinkActive="active">
+                <i class="material-icons">support_agent</i>
+                Funcionários
+            </a>
+            <a mat-list-item routerLink="/faq" routerLinkActive="active">
+                <i class="material-icons">contact_support</i>
+                Perguntas frequentes
+            </a>
             <a mat-list-item (click)="logout()" routerLinkActive="active">
                 <i class="material-icons">logout</i>
                 Logout
-            </a>
-            <a mat-list-item routerLink="/funcionario" routerLinkActive="active">
-                <i class="material-icons">support_agent</i>
-                funcionarios
-
             </a>
         </mat-nav-list>
     </mat-drawer>
@@ -32,7 +35,7 @@
                 <i class="material-icons">menu</i>
             </button>
         </mat-toolbar>
-        
+
         <div class="container">
             <ng-content></ng-content>
         </div>

@@ -40,10 +40,16 @@ const routes: Routes = [
     component: ChamadosComponent,
     data: { titulo: 'Helpr | Chamados'}
   },
-  { path: 'funcionario', 
+  { path: 'funcionario',
   loadChildren: () => import('./views/funcionarios/funcionarios.module').then(m => m.FuncionariosModule),
-  canActivateChild:[LimitadorClienteGuard] }
- 
+  canActivateChild:[LimitadorClienteGuard],
+  data: { titulo: 'Helpr | Funcionários'}
+ },
+  { path: 'faq',
+  loadChildren: () => import('./views/faq/faq.module').then(m => m.FaqModule),
+  data: { titulo: 'Helpr | FAQ'}
+}
+
 ];
 
 @NgModule({
