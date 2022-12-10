@@ -11,6 +11,7 @@ const ELEMENT_DATA: Funcionario[] = [];
   styleUrls: ['./funcionarios.component.css'],
 })
 export class FuncionariosComponent implements OnInit {
+  constructor(private funcionarioService: FuncionarioService) {}
   displayedColumns: string[] = [
     'foto',
     'id',
@@ -21,22 +22,16 @@ export class FuncionariosComponent implements OnInit {
     'editar',
     'detalhes',
   ];
-  dataSource = new MatTableDataSource(ELEMENT_DATA);
-
-  constructor(private funcionarioService: FuncionarioService) {}
+  dataSource: Funcionario[] = [];
 
   ngOnInit(): void {
-    this.InitializeTable();
+    this.initializeTable();
   }
 
-  public InitializeTable() {
-    this.funcionarioService.findAll().subscribe((funcionario) => {
-      this.dataSource = new MatTableDataSource(funcionario);
-    });
-  }
 
-  applyFilter(event: Event) {
-    const filterValue = (event.target as HTMLInputElement).value;
-    this.dataSource.filter = filterValue.trim().toLowerCase();
+  public initializeTable() : void {
+    this.funcionarioService.findAll().subscribe(funcionarios => {
+      this.dataSource = funcionarios;
+    })
   }
 }
