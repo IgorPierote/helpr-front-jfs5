@@ -1,11 +1,14 @@
+import { MatTableDataSource } from '@angular/material/table';
 import { FuncionarioService } from 'src/app/services/funcionario.service';
 import { Funcionario } from './../../../models/funcionario';
 import { Component, OnInit } from '@angular/core';
 
+const ELEMENT_DATA: Funcionario[] = [];
+
 @Component({
   selector: 'app-funcionarios',
   templateUrl: './funcionarios.component.html',
-  styleUrls: ['./funcionarios.component.css']
+  styleUrls: ['./funcionarios.component.css'],
 })
 export class FuncionariosComponent implements OnInit {
   constructor(private funcionarioService: FuncionarioService) {}
@@ -19,16 +22,20 @@ export class FuncionariosComponent implements OnInit {
     'editar',
     'detalhes',
   ];
-  dataSource: Funcionario[] = [];
+  dataSource = new MatTableDataSource(ELEMENT_DATA)
 
   ngOnInit(): void {
     this.initializeTable();
   }
- 
+
 
   public initializeTable() : void {
     this.funcionarioService.findAll().subscribe(funcionarios => {
-      this.dataSource = funcionarios;
+      this.dataSource = new MatTableDataSource(funcionarios);
     })
+  }
+  applyFilter(event: Event) {
+    const filterValue = (event.target as HTMLInputElement).value;
+    this.dataSource.filter = filterValue.trim().toLowerCase();
   }
 }

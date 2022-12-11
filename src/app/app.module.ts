@@ -1,3 +1,5 @@
+
+
 import { AuthInterceptor } from './interceptors/auth.interceptor';
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
@@ -11,15 +13,20 @@ import { NgxMaskModule } from 'ngx-mask';
 import { ToastrModule, ToastContainerModule } from 'ngx-toastr';
 
 
+
+
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+
+
+
   ],
   imports: [
     ToastrModule.forRoot({
       timeOut: 4000,
       progressBar: true,
-      closeButton: true 
+      closeButton: true
     }),
     ToastContainerModule,
     BrowserModule,
