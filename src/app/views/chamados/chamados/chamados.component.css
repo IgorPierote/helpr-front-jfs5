@@ -10,6 +10,14 @@ table {
     width: 100%;
 }
 
+<<<<<<< HEAD
+.loading-spinner {
+    padding: 25px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+=======
 table {
   width: 100%;
 }
@@ -22,3 +30,4 @@ table {
 .custom-mat-form-field {
   display: contents;
 }
+>>>>>>> 9c033eae54928134967297c6718ee89cd742b8ff
