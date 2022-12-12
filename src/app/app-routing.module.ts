@@ -15,7 +15,7 @@ const routes: Routes = [
   },
   {
     path: 'login',
-    loadChildren: () => import("./views/login/login.module").then(m => m.LoginModule), 
+    loadChildren: () => import("./views/login/login.module").then(m => m.LoginModule),
     data: {titulo: 'Helpr | Login'}
   },
   {
@@ -27,7 +27,7 @@ const routes: Routes = [
   {
     path: 'clientes',
     loadChildren: () => import('./views/clientes/clientes.module').then(m => m.ClientesModule),
-    canActivateChild:[LimitadorClienteGuard], 
+    canActivateChild:[LimitadorClienteGuard],
     data: { titulo: 'Helpr | Clientes'}
   },
   {
@@ -36,10 +36,16 @@ const routes: Routes = [
     canActivateChild:[LimitadorClienteGuard],
     data: { titulo: 'Helpr | Chamados'}
   },
-  { path: 'funcionarios', 
+  { path: 'funcionario',
   loadChildren: () => import('./views/funcionarios/funcionarios.module').then(m => m.FuncionariosModule),
-  canActivateChild:[LimitadorClienteGuard] }
- 
+  canActivateChild:[LimitadorClienteGuard],
+  data: { titulo: 'Helpr | Funcionários'}
+ },
+  { path: 'faq',
+  loadChildren: () => import('./views/faq/faq.module').then(m => m.FaqModule),
+  data: { titulo: 'Helpr | FAQ'}
+}
+
 ];
 
 @NgModule({
