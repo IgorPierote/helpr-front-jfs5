@@ -1,9 +1,11 @@
+import { MatDialog } from '@angular/material/dialog';
 import { Component, HostBinding, OnInit } from '@angular/core';
 import { Cliente } from 'src/app/models/cliente';
 import { ClienteService } from './../../../services/cliente.service';
 import { NotificationService } from 'src/app/services/notification.service';
 import { MatTableDataSource } from '@angular/material/table';
 import { AppComponent } from 'src/app/app.component';
+import { DetalhesClientesComponent } from 'src/app/components/detalhes/detalhes-clientes/detalhes-clientes.component';
 
 const ELEMENT_DATA: Cliente[] = [];
 
@@ -21,13 +23,15 @@ export class ClientesComponent implements OnInit {
     'telefone',
     'editar',
     'excluir',
+    'detalhes'
   ];
   // dataSource: Cliente[] = [];
   dataSource = new MatTableDataSource(ELEMENT_DATA)
 
   constructor(
     private clienteService: ClienteService,
-    private notifyService: NotificationService
+    private notifyService: NotificationService,
+    private dialog: MatDialog
   ) {}
 
   ngOnInit(): void {
@@ -62,6 +66,13 @@ export class ClientesComponent implements OnInit {
 
   switchMode(isDarkMode: boolean) {
     AppComponent.isDark = isDarkMode;
+  }
+
+  public openDetails(chamado: Cliente): void{
+    this.dialog.open(DetalhesClientesComponent, {
+      width: "400px",
+      data: chamado
+    });
   }
 
 }
