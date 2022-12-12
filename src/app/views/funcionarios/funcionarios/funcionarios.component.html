@@ -18,10 +18,8 @@
           <td mat-cell *matCellDef="let funcionario">
             <img
               class="perfil"
-              [src]="
-                funcionario.foto ||
-                'https://static.vecteezy.com/ti/vetor-gratis/p3/2318271-icone-do-perfil-do-usuario-gratis-vetor.jpg'
-              "
+              src = "{{funcionario.foto | avatar }}"
+
               alt="foto de perfil"
             />
           </td>

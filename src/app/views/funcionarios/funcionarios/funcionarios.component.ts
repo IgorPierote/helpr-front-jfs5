@@ -14,8 +14,8 @@ const ELEMENT_DATA: Funcionario[] = [];
 export class FuncionariosComponent implements OnInit {
   constructor(private funcionarioService: FuncionarioService) {}
   displayedColumns: string[] = [
-    'foto',
     'id',
+    'foto',
     'nome',
     'cpf',
     'email',
