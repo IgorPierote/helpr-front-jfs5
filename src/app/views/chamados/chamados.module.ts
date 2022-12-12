@@ -7,6 +7,7 @@ import { CommonModule } from '@angular/common';
 import { ChamadosRoutingModule } from './chamados-routing.module';
 import { ChamadosComponent } from './chamados/chamados.component';
 import { NewChamadoComponent } from './new-chamado/new-chamado.component';
+import { MatDialogModule } from '@angular/material/dialog';
 
 
 @NgModule({
@@ -19,7 +20,8 @@ import { NewChamadoComponent } from './new-chamado/new-chamado.component';
     ChamadosRoutingModule,
     ComponentsModule,
     MaterialModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    MatDialogModule
   ]
 })
 export class ChamadosModule { }
