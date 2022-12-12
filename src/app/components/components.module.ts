@@ -3,10 +3,12 @@ import { MaterialModule } from './../shared/material/material.module';
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { NavBarComponent } from './nav-bar/nav-bar.component';
+import { DetalhesChamadosComponent } from './detalhes/detalhes-chamados/detalhes-chamados.component';
 
 @NgModule({
   declarations: [
-    NavBarComponent
+    NavBarComponent,
+    DetalhesChamadosComponent
   ],
   imports: [
     CommonModule,

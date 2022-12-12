@@ -3,6 +3,8 @@ import { Chamado } from './../../../models/chamado';
 import { Component, OnInit } from '@angular/core';
 import { MatTableDataSource } from '@angular/material/table';
 import { NotificationService } from 'src/app/services/notification.service';
+import { MatDialog } from '@angular/material/dialog';
+import { DetalhesChamadosComponent } from 'src/app/components/detalhes/detalhes-chamados/detalhes-chamados.component';
 
 const ELEMENT_DATA: Chamado[] = [];
 
@@ -24,7 +26,9 @@ export class ChamadosComponent implements OnInit {
   ];
   dataSource = new MatTableDataSource(ELEMENT_DATA);
 
-  constructor(private chamadoService: ChamadoService) {}
+  constructor(
+    private chamadoService: ChamadoService,
+    private dialog: MatDialog) {}
 
   ngOnInit(): void {
     this.initializeTable();
@@ -39,5 +43,12 @@ export class ChamadosComponent implements OnInit {
   applyFilter(event: Event) {
     const filterValue = (event.target as HTMLInputElement).value;
     this.dataSource.filter = filterValue.trim().toLowerCase();
+  }
+
+  public openDetails(chamado: Chamado): void{
+    this.dialog.open(DetalhesChamadosComponent, {
+      width: "400px",
+      data: chamado
+    });
   }
 }
