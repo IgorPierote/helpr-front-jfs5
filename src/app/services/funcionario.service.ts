@@ -18,7 +18,7 @@ export class FuncionarioService {
     return this.http
       .get<Funcionario[]>(`${API_CONFIG.baseUrl}/funcionarios`)
       .pipe(
-        catchError((error: any) => {
+          catchError((error: any) => {
           this.notificationService.showError("Erro ao buscar funcionarios", "ERRO")
           console.error(error);
           return EMPTY;
