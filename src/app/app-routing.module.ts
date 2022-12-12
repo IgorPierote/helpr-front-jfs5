@@ -36,7 +36,7 @@ const routes: Routes = [
     canActivateChild:[LimitadorClienteGuard],
     data: { titulo: 'Helpr | Chamados'}
   },
-  { path: 'funcionario',
+  { path: 'funcionarios',
   loadChildren: () => import('./views/funcionarios/funcionarios.module').then(m => m.FuncionariosModule),
   canActivateChild:[LimitadorClienteGuard],
   data: { titulo: 'Helpr | Funcionários'}
