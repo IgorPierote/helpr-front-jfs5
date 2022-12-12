@@ -26,11 +26,11 @@ color: (
 )
 ));
 
+.theme-light{ 
+    @include mat.all-component-themes($helpr-front-light-theme);
+}
 
 .theme-dark{
     @include mat.all-component-themes($helpr-front-dark-theme);
 }
 
-.theme-light{ 
-    @include mat.all-component-themes($helpr-front-light-theme);
-}
