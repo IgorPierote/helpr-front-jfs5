@@ -24,5 +24,5 @@ export class AppComponent {
     ).pipe(switchMap((route) => route.data)).subscribe((event) => titleService.setTitle(event['titulo']));
   }
 
-  
+  public static isDark: boolean = false;
 }

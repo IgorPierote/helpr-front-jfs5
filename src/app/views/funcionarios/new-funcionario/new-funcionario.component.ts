@@ -3,7 +3,8 @@ import { NotificationService } from 'src/app/services/notification.service';
 import { FuncionarioService } from 'src/app/services/funcionario.service';
 import { Funcionario } from './../../../models/funcionario';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { Component, OnInit, Type } from '@angular/core';
+import { Component, HostBinding, OnInit, Type } from '@angular/core';
+import { AppComponent } from 'src/app/app.component';
 
 @Component({
   selector: 'app-new-funcionario',
@@ -48,6 +49,15 @@ newFuncionarios:FormGroup;
   }
   }
   ngOnInit(): void {
+  }
+
+  @HostBinding('class')
+  get themeMode() {
+    return AppComponent.isDark? 'theme-dark' : 'theme-light'
+  }
+
+  switchMode(isDarkMode: boolean) {
+    AppComponent.isDark = isDarkMode;
   }
 
 }

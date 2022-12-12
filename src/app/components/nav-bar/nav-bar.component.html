@@ -34,6 +34,9 @@
             <button type="button" mat-icon-button (click)="drawer.toggle()">
                 <i class="material-icons">menu</i>
             </button>
+            <span>
+                <mat-slide-toggle [checked]="isDark" (change)="onDarkModeSwitched($event)">Dark Mode</mat-slide-toggle>
+            </span>
         </mat-toolbar>
 
         <div class="container">
