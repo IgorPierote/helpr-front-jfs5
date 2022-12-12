@@ -2,8 +2,9 @@ import { Router } from '@angular/router';
 import { ClienteService } from './../../../services/cliente.service';
 import { Cliente } from 'src/app/models/cliente';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
-import { Component, OnInit } from '@angular/core';
+import { Component, HostBinding, OnInit } from '@angular/core';
 import { NotificationService } from 'src/app/services/notification.service';
+import { AppComponent } from 'src/app/app.component';
 
 @Component({
   selector: 'app-new-cliente',
@@ -45,5 +46,14 @@ export class NewClienteComponent implements OnInit {
     else {
       this.notifyService.showError("Dados inválidos.", "Inválido");
     }
+  }
+
+  @HostBinding('class')
+  get themeMode() {
+    return AppComponent.isDark? 'theme-dark' : 'theme-light'
+  }
+
+  switchMode(isDarkMode: boolean) {
+    AppComponent.isDark = isDarkMode;
   }
 }
