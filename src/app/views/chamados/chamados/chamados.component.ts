@@ -1,10 +1,11 @@
 import { ChamadoService } from './../../../services/chamado.service';
 import { Chamado } from './../../../models/chamado';
-import { Component, OnInit } from '@angular/core';
+import { Component, HostBinding, OnInit } from '@angular/core';
 import { MatTableDataSource } from '@angular/material/table';
 import { NotificationService } from 'src/app/services/notification.service';
 import { MatDialog } from '@angular/material/dialog';
 import { DetalhesChamadosComponent } from 'src/app/components/detalhes/detalhes-chamados/detalhes-chamados.component';
+import { AppComponent } from 'src/app/app.component';
 
 const ELEMENT_DATA: Chamado[] = [];
 
@@ -50,5 +51,14 @@ export class ChamadosComponent implements OnInit {
       width: "400px",
       data: chamado
     });
+  }
+
+  @HostBinding('class')
+  get themeMode() {
+    return AppComponent.isDark? 'theme-dark' : 'theme-light'
+  }
+
+  switchMode(isDarkMode: boolean) {
+    AppComponent.isDark = isDarkMode;
   }
 }

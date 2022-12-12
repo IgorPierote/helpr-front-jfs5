@@ -14,7 +14,7 @@
                 <i class="material-icons">perm_phone_msg</i>
                 Chamados
             </a>
-            <a mat-list-item routerLink="/funcionario" routerLinkActive="active">
+            <a mat-list-item routerLink="/funcionarios" routerLinkActive="active">
                 <i class="material-icons">support_agent</i>
                 Funcionários
             </a>
@@ -34,6 +34,9 @@
             <button type="button" mat-icon-button (click)="drawer.toggle()">
                 <i class="material-icons">menu</i>
             </button>
+            <span>
+                <mat-slide-toggle [checked]="isDark" (change)="onDarkModeSwitched($event)">Dark Mode</mat-slide-toggle>
+            </span>
         </mat-toolbar>
 
         <div class="container">

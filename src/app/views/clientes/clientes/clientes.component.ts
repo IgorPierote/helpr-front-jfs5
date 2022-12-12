@@ -1,8 +1,9 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, HostBinding, OnInit } from '@angular/core';
 import { Cliente } from 'src/app/models/cliente';
 import { ClienteService } from './../../../services/cliente.service';
 import { NotificationService } from 'src/app/services/notification.service';
 import { MatTableDataSource } from '@angular/material/table';
+import { AppComponent } from 'src/app/app.component';
 
 const ELEMENT_DATA: Cliente[] = [];
 
@@ -54,5 +55,13 @@ export class ClientesComponent implements OnInit {
     }
   }
 
+  @HostBinding('class')
+  get themeMode() {
+    return AppComponent.isDark? 'theme-dark' : 'theme-light'
+  }
+
+  switchMode(isDarkMode: boolean) {
+    AppComponent.isDark = isDarkMode;
+  }
 
 }

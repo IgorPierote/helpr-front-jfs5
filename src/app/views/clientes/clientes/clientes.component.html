@@ -1,4 +1,4 @@
-<app-nav-bar>
+<app-nav-bar (darkModeSwitched)="switchMode($event)">
   <ng-container>
     <div class="container-title">
       <h2>Clientes</h2>
@@ -11,7 +11,7 @@
       <input matInput (keyup)="applyFilter($event)" placeholder="Filtro de busca" #input>
     </mat-form-field>
 
-    <div *ngIf="dataSource; else loading">
+    <div *ngIf="dataSource.data.length > 0; else loading">
       <table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
         <ng-container matColumnDef="id">
           <th mat-header-cell *matHeaderCellDef>Id</th>

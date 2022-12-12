@@ -1,7 +1,8 @@
 import { MatTableDataSource } from '@angular/material/table';
 import { FuncionarioService } from 'src/app/services/funcionario.service';
 import { Funcionario } from './../../../models/funcionario';
-import { Component, OnInit } from '@angular/core';
+import { Component, HostBinding, OnInit } from '@angular/core';
+import { AppComponent } from 'src/app/app.component';
 
 const ELEMENT_DATA: Funcionario[] = [];
 
@@ -13,8 +14,8 @@ const ELEMENT_DATA: Funcionario[] = [];
 export class FuncionariosComponent implements OnInit {
   constructor(private funcionarioService: FuncionarioService) {}
   displayedColumns: string[] = [
-    'foto',
     'id',
+    'foto',
     'nome',
     'cpf',
     'email',
@@ -37,5 +38,14 @@ export class FuncionariosComponent implements OnInit {
   applyFilter(event: Event) {
     const filterValue = (event.target as HTMLInputElement).value;
     this.dataSource.filter = filterValue.trim().toLowerCase();
+  }
+
+  @HostBinding('class')
+  get themeMode() {
+    return AppComponent.isDark? 'theme-dark' : 'theme-light'
+  }
+
+  switchMode(isDarkMode: boolean) {
+    AppComponent.isDark = isDarkMode;
   }
 }

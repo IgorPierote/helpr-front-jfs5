@@ -1,9 +1,10 @@
 import { ClienteService } from './../../../services/cliente.service';
 import { Cliente } from './../../../models/cliente';
-import { Component, OnInit } from '@angular/core';
+import { Component, HostBinding, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { NgForm } from '@angular/forms';
 import { NotificationService } from 'src/app/services/notification.service';
+import { AppComponent } from 'src/app/app.component';
 
 @Component({
   selector: 'app-edit-cliente',
@@ -50,5 +51,14 @@ export class EditClienteComponent implements OnInit {
     else {
       this.notifyService.showError("Dados inválidos.", "Erro :(");
     }
+  }
+
+  @HostBinding('class')
+  get themeMode() {
+    return AppComponent.isDark? 'theme-dark' : 'theme-light'
+  }
+
+  switchMode(isDarkMode: boolean) {
+    AppComponent.isDark = isDarkMode;
   }
 }
