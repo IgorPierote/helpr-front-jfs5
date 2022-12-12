@@ -1,7 +1,10 @@
-import { ClienteService } from './../../../services/cliente.service';
 import { Component, OnInit } from '@angular/core';
 import { Cliente } from 'src/app/models/cliente';
+import { ClienteService } from './../../../services/cliente.service';
 import { NotificationService } from 'src/app/services/notification.service';
+import { MatTableDataSource } from '@angular/material/table';
+
+const ELEMENT_DATA: Cliente[] = [];
 
 @Component({
   selector: 'app-clientes',
@@ -18,7 +21,8 @@ export class ClientesComponent implements OnInit {
     'editar',
     'excluir',
   ];
-  dataSource: Cliente[] = [];
+  // dataSource: Cliente[] = [];
+  dataSource = new MatTableDataSource(ELEMENT_DATA)
 
   constructor(
     private clienteService: ClienteService,
@@ -31,8 +35,13 @@ export class ClientesComponent implements OnInit {
 
   private initializeTable(): void {
     this.clienteService.findAll().subscribe((clientes) => {
-      this.dataSource = clientes;
+      this.dataSource = new MatTableDataSource(clientes);
     });
+  }
+
+  applyFilter(event: Event) {
+    const filterValue = (event.target as HTMLInputElement).value;
+    this.dataSource.filter = filterValue.trim().toLowerCase();
   }
 
   public delete(id: number): void {
@@ -44,4 +53,6 @@ export class ClientesComponent implements OnInit {
       });
     }
   }
+
+
 }
