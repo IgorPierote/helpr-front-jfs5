@@ -9,6 +9,7 @@ import { MatTableModule } from '@angular/material/table';
 import { MatSelectModule } from '@angular/material/select';
 import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
 import {MatSlideToggleModule} from '@angular/material/slide-toggle';
+import {MatTooltipModule} from '@angular/material/tooltip';
 
 @NgModule({
   exports: [
@@ -21,7 +22,8 @@ import {MatSlideToggleModule} from '@angular/material/slide-toggle';
     MatSelectModule,
     MatProgressSpinnerModule,
     MatDialogModule,
-    MatSlideToggleModule
-  ]
+    MatSlideToggleModule,
+    MatTooltipModule
+    ]
 })
 export class MaterialModule { }

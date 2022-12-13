@@ -23,8 +23,8 @@
                 <input type="password" name="senha" matInput name="senha" [(ngModel)]="cliente.senha" required>
             </mat-form-field>
 
-            <button type="submit" mat-raised-button color="primary" (click)="update(formEdit)">Editar</button>
-            <a type="button" mat-raised-button color="warn" routerLink="/clientes">Cancelar</a>
+            <button type="submit" mat-raised-button color="primary" (click)="update(formEdit)" matTooltip="Editar este cliente" matTooltipClass="tooltip" matTooltipPosition="below">Editar</button>
+            <a type="button" mat-raised-button color="warn" routerLink="/clientes" matTooltip="Cancelar edição deste cliente" matTooltipClass="tooltip" matTooltipPosition="below">Cancelar</a>
         </form>
     </ng-container>
 </app-nav-bar>
